@@ -9,7 +9,7 @@ const Login = () => {
     const { signIn } = useContext(AuthContext);
     const { register, handleSubmit } = useForm();
     const onSubmit = (data) => {
-        console.log(data);
+        // console.log(data);
         signIn(data.email, data.password)
             .then(data => {
                 toast.success("User logged in successfully!");
