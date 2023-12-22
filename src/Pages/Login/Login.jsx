@@ -1,18 +1,25 @@
 import { Link } from 'react-router-dom';
 import loginImg from '../../assets/login.gif';
 import { useForm } from 'react-hook-form';
-import { useContext } from 'react';
-import { AuthContext } from '../../providers/AuthProvider';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import useAuth from '../../hooks/useAuth';
+import useAxiosPublic from '../../hooks/useAxiosPublic';
 const Login = () => {
-    const { signIn } = useContext(AuthContext);
+    const { signIn } = useAuth();
+    const axiosPublic = useAxiosPublic();
     const { register, handleSubmit } = useForm();
     const onSubmit = (data) => {
         // console.log(data);
         signIn(data.email, data.password)
-            .then(data => {
-                toast.success("User logged in successfully!");
+            .then(resData => {
+                const loggedUser = {email: data.email}
+                axiosPublic.post('/jwt', loggedUser, {withCredentials: true})
+                .then(response => {
+                    if(response.data.success) {
+                        toast.success("User logged in successfully!");
+                    }
+                })
             })
             .catch(err => {
                 toast.error(err.message);

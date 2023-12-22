@@ -1,14 +1,13 @@
 import { Helmet } from "react-helmet-async";
 import registerImg from "../../assets/register.gif";
 import { useForm } from "react-hook-form";
-import { useContext } from "react";
-import { AuthContext } from "../../providers/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import useAuth from "../../hooks/useAuth";
 
 const Register = () => {
-    const { createUser, updateUser } = useContext(AuthContext);
-    const { register, handleSubmit } = useForm();
+    const { createUser, updateUser } = useAuth();
+    const { register, handleSubmit, reset } = useForm();
     const onSubmit = (data) => {
         // console.log(data);
         createUser(data.email, data.password)
@@ -16,6 +15,7 @@ const Register = () => {
                 updateUser(data.name, data.photoURL)
                 .then(updateRes => {
                     toast.success("User profile created successfully!");
+                    reset();
                 })
             })
             .catch(err => {
