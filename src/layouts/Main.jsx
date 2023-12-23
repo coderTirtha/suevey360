@@ -5,8 +5,20 @@ import { FcSurvey } from "react-icons/fc";
 import { IoPricetags } from "react-icons/io5";
 import { GrLogin } from "react-icons/gr";
 import logo from '../assets/logoWhite.png';
+import useAuth from "../hooks/useAuth";
+import { MdLogout } from "react-icons/md";
+import { LuLayoutDashboard } from "react-icons/lu";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const Main = () => {
+    const { user, logOut } = useAuth();
+    const handleLogOut = () => {
+        logOut()
+        .then(res => {
+            toast.success("User successfully logged out!");
+        })
+    }
     return (
         <div>
             <div className="drawer lg:drawer-open">
@@ -26,13 +38,23 @@ const Main = () => {
                             <li className="hover:bg-gray-400 hover:rounded-lg"><NavLink to='/'><FaHome className="text-lg mr-2" />Home</NavLink></li>
                             <li className="hover:bg-gray-400 hover:rounded-lg"><NavLink to="/surveys"><FcSurvey className="text-lg mr-2" />All Surveys</NavLink></li>
                             <li className="hover:bg-gray-400 hover:rounded-lg"><NavLink to="/pricing"><IoPricetags className="text-lg mr-2" />Pricing</NavLink></li>
+                            {
+                                user ?
+                                <li className="hover:bg-gray-400 hover:rounded-lg"><NavLink to="/dashboard"><LuLayoutDashboard className="text-lg mr-2" />Dashboard</NavLink></li> :
+                                ''
+                            }
                         </div>
                         <div>
-                            <li className="hover:bg-gray-400 hover:rounded-lg"><NavLink to={'/login'}><GrLogin className="text-lg mr-2" />Login</NavLink></li>
+                            {
+                                user ?
+                                <button onClick={handleLogOut} className="btn btn-block"><MdLogout className="text-lg mr-2" />Logout</button> :
+                                <li className="border rounded-lg hover:bg-gray-400 hover:rounded-lg"><NavLink to={'/login'}><GrLogin className="text-lg mr-2" />Login</NavLink></li>
+                            }
                         </div>
                     </ul>
                 </div>
             </div>
+            <ToastContainer />
         </div>
     );
 };
