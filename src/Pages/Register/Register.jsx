@@ -4,19 +4,31 @@ import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import useAuth from "../../hooks/useAuth";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const Register = () => {
     const { createUser, updateUser } = useAuth();
     const { register, handleSubmit, reset } = useForm();
+    const axiosSecure = useAxiosSecure();
     const onSubmit = (data) => {
         // console.log(data);
         createUser(data.email, data.password)
             .then(resData => {
                 updateUser(data.name, data.photoURL)
-                .then(updateRes => {
-                    toast.success("User profile created successfully!");
-                    reset();
-                })
+                    .then(updateRes => {
+                        const user = {
+                            name: data.name,
+                            email: data.email,
+                            role: "user"
+                        }
+                        axiosSecure.post('/users', user, { withCredentials: true })
+                            .then(response => {
+                                if (response.data.insertedId) {
+                                    toast.success("User profile created successfully!");
+                                    reset();
+                                }
+                            })
+                    })
             })
             .catch(err => {
                 toast.error(err.message);
