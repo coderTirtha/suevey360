@@ -5,14 +5,14 @@ import useAxiosSecure from "./useAxiosSecure";
 const useSurveyor = () => {
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
-    const { data: isSurveyor = [] } = useQuery({
+    const { data: isSurveyor = [], isPending: surveyorLoading } = useQuery({
         queryKey: [user?.email, "isSurveyor"],
         queryFn: async() => {
             const result = await axiosSecure.get(`/users/surveyor/${user?.email}`, {withCredentials: true});
-            return result.data;
+            return result.data?.surveyor;
         }
     })
-    return [isSurveyor];
+    return [isSurveyor, surveyorLoading];
 };
 
 export default useSurveyor;

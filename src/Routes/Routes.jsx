@@ -9,6 +9,8 @@ import Dashboard from "../layouts/Dashboard";
 import AddSurvey from "../Pages/Dashboard/AddSurvey/AddSurvey";
 import AdminRoute from "./AdminRoute";
 import ManageSurvey from "../Pages/Dashboard/ManageSurvey/ManageSurvey";
+import SurveyorRoute from "./SurveyorRoute";
+import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
 
 const router = createBrowserRouter([
     {
@@ -34,13 +36,20 @@ const router = createBrowserRouter([
         path: '/dashboard',
         element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
         children: [
+            // Surveyor Routes in Dashboard
             {
                 path: '/dashboard/addSurvey',
-                element: <AddSurvey></AddSurvey>
+                element: <SurveyorRoute><AddSurvey></AddSurvey></SurveyorRoute>
             },
+
+            // Admin Routes in Dashboard
             {
                 path: '/dashboard/manageSurveys',
                 element: <AdminRoute><ManageSurvey></ManageSurvey></AdminRoute>
+            },
+            {
+                path: '/dashboard/manageUsers',
+                element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
             }
         ]
     }

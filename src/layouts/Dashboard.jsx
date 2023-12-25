@@ -7,10 +7,13 @@ import logo from '../assets/logoWhite.png';
 import { FaHome } from 'react-icons/fa';
 import { MdOutlineAddBox, MdOutlinePendingActions } from "react-icons/md";
 import useAdmin from '../hooks/useAdmin';
+import { FaUsers } from "react-icons/fa6";
+import useSurveyor from '../hooks/useSurveyor';
 
 const Dashboard = () => {
     const { user } = useAuth();
     const [isAdmin] = useAdmin();
+    const [isSurveyor] = useSurveyor();
     return (
         <div>
             <Helmet>
@@ -30,13 +33,20 @@ const Dashboard = () => {
                             <img src={logo} alt="" className="w-[150px] mx-auto" />
                         </div>
                         <div>
-                            <li className="hover:bg-gray-400 hover:rounded-lg"><NavLink to='/dashboard/surveyorHome'><FaHome className="text-lg mr-2" />Surveyor Home</NavLink></li>
-                            <li className="hover:bg-gray-400 hover:rounded-lg"><NavLink to="/dashboard/addSurvey"><MdOutlineAddBox className="text-lg mr-2" />Add Surveys</NavLink></li>
-                            <li className="hover:bg-gray-400 hover:rounded-lg"><NavLink to="/dashboard/pendingSurveys"><MdOutlinePendingActions className="text-lg mr-2" />Pending Surveys</NavLink></li>
                             {
-                                isAdmin ?
-                                <li className="hover:bg-gray-400 hover:rounded-lg"><NavLink to="/dashboard/manageSurveys"><MdOutlinePendingActions className="text-lg mr-2" />Manage Surveys</NavLink></li> :
-                                ""
+                                isSurveyor &&
+                                <>
+                                    <li className="hover:bg-gray-400 hover:rounded-lg"><NavLink to='/dashboard/surveyorHome'><FaHome className="text-lg mr-2" />Surveyor Home</NavLink></li>
+                                    <li className="hover:bg-gray-400 hover:rounded-lg"><NavLink to="/dashboard/addSurvey"><MdOutlineAddBox className="text-lg mr-2" />Add Surveys</NavLink></li>
+                                    <li className="hover:bg-gray-400 hover:rounded-lg"><NavLink to="/dashboard/pendingSurveys"><MdOutlinePendingActions className="text-lg mr-2" />Pending Surveys</NavLink></li>
+                                </>
+                            }
+                            {
+                                isAdmin &&
+                                <>
+                                    <li className="hover:bg-gray-400 hover:rounded-lg"><NavLink to="/dashboard/manageUsers"><FaUsers className="text-lg mr-2" />Manage Users</NavLink></li>
+                                    <li className="hover:bg-gray-400 hover:rounded-lg"><NavLink to="/dashboard/manageSurveys"><MdOutlinePendingActions className="text-lg mr-2" />Manage Surveys</NavLink></li>
+                                </>
                             }
                         </div>
                         <div>
