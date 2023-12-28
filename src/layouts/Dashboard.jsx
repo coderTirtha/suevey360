@@ -4,7 +4,7 @@ import useAuth from '../hooks/useAuth';
 import { RiMenu2Fill } from 'react-icons/ri';
 import { NavLink, Outlet } from 'react-router-dom';
 import logo from '../assets/logoWhite.png';
-import { FaHome } from 'react-icons/fa';
+import { FaHome, FaRegCreditCard } from 'react-icons/fa';
 import { MdOutlineAddBox, MdOutlinePendingActions } from "react-icons/md";
 import useAdmin from '../hooks/useAdmin';
 import { FaUsers } from "react-icons/fa6";
@@ -44,8 +44,10 @@ const Dashboard = () => {
                             {
                                 isAdmin &&
                                 <>
+                                    <li className="hover:bg-gray-400 hover:rounded-lg"><NavLink to="/dashboard/adminHome"><FaHome className="text-lg mr-2" />Admin Home</NavLink></li>
                                     <li className="hover:bg-gray-400 hover:rounded-lg"><NavLink to="/dashboard/manageUsers"><FaUsers className="text-lg mr-2" />Manage Users</NavLink></li>
                                     <li className="hover:bg-gray-400 hover:rounded-lg"><NavLink to="/dashboard/manageSurveys"><MdOutlinePendingActions className="text-lg mr-2" />Manage Surveys</NavLink></li>
+                                    <li className="hover:bg-gray-400 hover:rounded-lg"><NavLink to="/dashboard/allPayments"><FaRegCreditCard className="text-lg mr-2" />All Payments</NavLink></li>
                                 </>
                             }
                         </div>

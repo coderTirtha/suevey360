@@ -11,6 +11,9 @@ import AdminRoute from "./AdminRoute";
 import ManageSurvey from "../Pages/Dashboard/ManageSurvey/ManageSurvey";
 import SurveyorRoute from "./SurveyorRoute";
 import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
+import Pricing from "../Pages/Pricing/Pricing";
+import Checkout from "../Pages/Checkout/Checkout";
+import Surveys from "../Pages/Surveys/Surveys";
 
 const router = createBrowserRouter([
     {
@@ -29,6 +32,18 @@ const router = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register></Register>
+            },
+            {
+                path: '/pricing',
+                element: <Pricing></Pricing>
+            },
+            {
+                path: '/checkout/:id',
+                element: <PrivateRoute><Checkout></Checkout></PrivateRoute>
+            },
+            {
+                path: '/surveys',
+                element: <Surveys></Surveys>
             }
         ]
     },

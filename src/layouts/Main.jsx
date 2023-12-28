@@ -36,7 +36,7 @@ const Main = () => {
                         </div>
                         <div>
                             <li className="hover:bg-gray-400 hover:rounded-lg"><NavLink to='/'><FaHome className="text-lg mr-2" />Home</NavLink></li>
-                            <li className="hover:bg-gray-400 hover:rounded-lg"><NavLink to="/surveys"><FcSurvey className="text-lg mr-2" />All Surveys</NavLink></li>
+                            <li className="hover:bg-gray-400 hover:rounded-lg"><NavLink to="/surveys"><FcSurvey className="text-lg mr-2" />Surveys</NavLink></li>
                             <li className="hover:bg-gray-400 hover:rounded-lg"><NavLink to="/pricing"><IoPricetags className="text-lg mr-2" />Pricing</NavLink></li>
                             {
                                 user ?
