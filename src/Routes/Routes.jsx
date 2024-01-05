@@ -14,6 +14,8 @@ import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
 import Pricing from "../Pages/Pricing/Pricing";
 import Checkout from "../Pages/Checkout/Checkout";
 import Surveys from "../Pages/Surveys/Surveys";
+import CheckoutSuccess from "../Pages/Checkout/CheckoutSuccess";
+import SurveyDetails from "../Pages/Surveys/SurveyDetails";
 
 const router = createBrowserRouter([
     {
@@ -44,6 +46,14 @@ const router = createBrowserRouter([
             {
                 path: '/surveys',
                 element: <Surveys></Surveys>
+            },
+            {
+                path: '/surveys/:id',
+                element: <PrivateRoute><SurveyDetails></SurveyDetails></PrivateRoute>
+            },
+            {
+                path: '/payment/success/:trans_id',
+                element: <PrivateRoute><CheckoutSuccess></CheckoutSuccess></PrivateRoute>
             }
         ]
     },
