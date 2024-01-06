@@ -76,6 +76,7 @@ const SurveyDetails = () => {
                     <h1 className="text-3xl font-bold">{survey.title}</h1>
                     <h3 className="badge badge-outline font-semibold ">{survey.category}</h3>
                 </div>
+                <p>{survey.description}</p>
             </div>
             {
                 survey?.yes?.includes(user?.email) || survey?.no?.includes(user?.email) ?

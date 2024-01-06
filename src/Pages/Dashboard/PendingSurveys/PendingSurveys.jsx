@@ -1,13 +1,15 @@
 import { Helmet } from "react-helmet-async";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
+import useAuth from "../../../hooks/useAuth";
 
 const PendingSurveys = () => {
+    const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
     const { data: pendingSurveys = [], refetch } = useQuery({
         queryKey: ["pendingSurveys"],
         queryFn: async () => {
-            const result = await axiosSecure.get('/surveys/pending', { withCredentials: true });
+            const result = await axiosSecure.get(`/surveys/pending/${user?.email}`, { withCredentials: true });
             return result.data;
         }
     });

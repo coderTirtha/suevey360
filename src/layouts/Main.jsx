@@ -10,6 +10,7 @@ import { MdLogout } from "react-icons/md";
 import { LuLayoutDashboard } from "react-icons/lu";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import Footer from "../Shared/Footer";
 
 const Main = () => {
     const { user, logOut } = useAuth();
@@ -26,6 +27,7 @@ const Main = () => {
                 <div className="drawer-content">
                     <label htmlFor="my-drawer-2" className="btn fixed z-50 top-2 right-2 drawer-button lg:hidden"><RiMenu2Fill className="text-xl" /></label>
                     <Outlet></Outlet>
+                    <Footer></Footer>
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
