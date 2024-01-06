@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { Helmet } from "react-helmet-async";
 
 const ManageUsers = () => {
     const axiosSecure = useAxiosSecure();
@@ -25,6 +26,9 @@ const ManageUsers = () => {
     }
     return (
         <div>
+            <Helmet>
+                <title>Users | Survey360</title>
+            </Helmet>
             <h1 className="text-center font-bold text-4xl my-8">All Users</h1>
             <div className="overflow-x-auto">
                 <table className="table">
@@ -47,7 +51,7 @@ const ManageUsers = () => {
                                 <td className="uppercase">{user.role}</td>
                                 <td>
                                     {
-                                        user?.role === "admin" || "surveyor" ? <p>N/A</p> : <div className="flex flex-col gap-2">
+                                        (user?.role === "admin" || user?.role === "surveyor") ? <p>N/A</p> : <div className="flex flex-col gap-2">
                                             <button onClick={() => handleRole("admin", user.name, user._id)} className="btn btn-sm bg-red-500 text-white hover:text-red-500">Make Admin</button>
                                             <button onClick={() => handleRole("surveyor", user.name, user._id)} className="btn btn-sm bg-green-500 text-white hover:text-green-500">Make Surveyor</button>
                                         </div>

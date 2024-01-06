@@ -16,6 +16,7 @@ import Checkout from "../Pages/Checkout/Checkout";
 import Surveys from "../Pages/Surveys/Surveys";
 import CheckoutSuccess from "../Pages/Checkout/CheckoutSuccess";
 import SurveyDetails from "../Pages/Surveys/SurveyDetails";
+import PendingSurveys from "../Pages/Dashboard/PendingSurveys/PendingSurveys";
 
 const router = createBrowserRouter([
     {
@@ -65,6 +66,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/addSurvey',
                 element: <SurveyorRoute><AddSurvey></AddSurvey></SurveyorRoute>
+            },
+            {
+                path: '/dashboard/pendingSurveys',
+                element: <SurveyorRoute><PendingSurveys></PendingSurveys></SurveyorRoute>
             },
 
             // Admin Routes in Dashboard

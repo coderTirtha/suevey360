@@ -88,7 +88,7 @@ const Survey = ({ survey, refetch }) => {
                 <p>{likes.includes(user?.email) ? `You and ${likes.length - 1} others liked this` : `${likes.length} people liked this`}</p>
             </div>
             <div className="flex join w-full">
-                <button onClick={handleLike} className="join-item btn flex-1"><AiOutlineLike /> Like</button>
+                <button onClick={handleLike} className={`join-item btn flex-1 ${likes.includes(user?.email) && "bg-gray-300"}`}><AiOutlineLike /> Like</button>
                 <button onClick={handleComment} className="join-item btn flex-1"><FaRegComment /> Comment</button>
             </div>
             <ToastContainer />
