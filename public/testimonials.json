@@ -1,0 +1,33 @@
+[
+    {
+      "name": "John Doe",
+      "occupation": "Marketing Manager",
+      "testimonial": "Survey360 has transformed our client feedback process. Its intuitive interface and powerful analytics have become indispensable for optimizing our marketing strategies. We consistently rate it 5 stars!",
+      "rating": 5
+    },
+    {
+      "name": "Jane Smith",
+      "occupation": "Human Resources Specialist",
+      "testimonial": "Survey360 is a game-changer for employee satisfaction surveys. Its robust customization options and insightful reporting features make it our top choice in HR. A solid 4.5 rating from our team!",
+      "rating": 4.5
+    },
+    {
+      "name": "Chris Johnson",
+      "occupation": "Small Business Owner",
+      "testimonial": "Survey360 revolutionized how we understand our customers. Creating surveys is a breeze, and the real-time results significantly impact our decision-making. Highly recommended with a solid 4-star rating!",
+      "rating": 4
+    },
+    {
+      "id": 4,
+      "name": "Emily Rodriguez",
+      "occupation": "Student",
+      "testimonial": "Survey360 makes academic research a breeze. Its versatility and ability to collect diverse responses are essential for our projects. We're impressed, earning it a 4.8 rating!",
+      "rating": 4.8
+    },
+    {
+      "name": "Michael Chang",
+      "occupation": "Product Manager",
+      "testimonial": "Survey360 is our go-to for product feedback. Features like branching logic and seamless integrations make it instrumental in our product development. A solid 4.2 rating from our product team!",
+      "rating": 4.2
+    }
+  ]

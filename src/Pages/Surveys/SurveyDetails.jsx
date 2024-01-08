@@ -68,7 +68,6 @@ const SurveyDetails = () => {
             })
 
     }
-    console.log(survey.comments);
     return (
         <div className="shadow-md p-4 rounded-md flex flex-col justify-between max-w-lg mx-auto">
             <div className="space-y-2">
