@@ -17,6 +17,7 @@ import Surveys from "../Pages/Surveys/Surveys";
 import CheckoutSuccess from "../Pages/Checkout/CheckoutSuccess";
 import SurveyDetails from "../Pages/Surveys/SurveyDetails";
 import PendingSurveys from "../Pages/Dashboard/PendingSurveys/PendingSurveys";
+import AllPayments from "../Pages/Dashboard/AllPayments/AllPayments";
 
 const router = createBrowserRouter([
     {
@@ -80,6 +81,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/manageUsers',
                 element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
+            },
+            {
+                path: '/dashboard/allPayments',
+                element: <AdminRoute><AllPayments></AllPayments></AdminRoute>
             }
         ]
     }
